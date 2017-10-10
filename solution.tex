@@ -1,0 +1,56 @@
+\documentclass[landscape]{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{fancyvrb}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[affil-it]{authblk}
+\usepackage[top = 1.0in, bottom = 1.0in, left = 1.0in, right = 1.0in]{geometry}
+\usepackage{amsthm}
+
+\newcommand\spc{\vspace{6pt}}
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\date{}
+\title{Atcoder杂题题解}
+\author{$\mathcal Exbilar$}
+
+\begin{document}
+
+\maketitle
+
+\section{AGC014 A. Cookie Exchanges}
+
+\subsection{题目大意}
+
+起初有$A$,$B$,$C$,三堆石头，每一次操作将A堆石头的数量各分一半到$B$,$C$堆，对于$B$,$C$,堆也是这样，求操作多少次后其中有一堆的石头数量为奇数. $A,B,C \le { 10 }^{ 9 }$
+
+\subsection{题解}
+
+其实直接模拟就可以了,再考虑一下特殊情况就可以AC.这里简单说一下证明.
+如果$A=B=C$,那么答案是无解或是0.
+那么对于其他情况,我们考虑两堆石头数量的最值.不妨设 $A \ge B \ge C$,那么经过一次操作之后,石头数量分别变为:$\frac { B + C }{2}$,$\frac { A + C }{2}$,$\frac { A + B }{2}$,很显然的发现以前的最值只差由$A-C$变为了$\frac {A - C}{2}$,所以最多$O(\log{N})$次就能使三个数相同,也就是最多操作这么多次,所以时间复杂度是$O({\log {N}})$ 
+
+\newpage
+
+\section{AGC014 B. Unplanned Queries}
+
+\subsection{题目大意}
+
+在一棵由$N$个节点树上,初始每条边权值为$0$,给你$M$个操作,每次操作是将$u$,$v$路径上的所有边权加一,已知操作后每条边的权值为偶数,求是否存在这样的树满足条件. $N,M \le {10}^{5}$
+
+\subsection{题解}
+
+又是一道结论题.判断操作中每个点出现的次数奇偶性,如果每个节点出现的次数都是偶数,那么存在,否则不存在.感性的认知一下,边权的操作可以转化成点权,如果每个节点在操作中出现的次数都是偶数,那么不难构造出一棵树满足条件,我们可以只把操作中的$(u,v)$直接看成边,注意一下不要连成环,最后把无关节点全部挂在一个节点上就可以了.若有一些点$v$,它们的出现次数是奇数,考虑深度最大的一个点,它与它父亲所连成的边一定只被覆盖了奇数次.因为它不可能再向下扩展(深度最深),那么它与他父亲连的那条边就存在于以它为端点的所有操作中(YY一下).
+
+\end{document}

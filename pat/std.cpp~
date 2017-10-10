@@ -1,0 +1,102 @@
+//
+//  main.cpp
+//  poj2985_treap
+//
+//  Created by Candy on 27/11/2016.
+//  Copyright © 2016 Candy. All rights reserved.
+//
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+#define lc t[x].l
+#define rc t[x].r
+const int N=2e5+5;
+inline int read(){
+    char c=getchar();int x=0,f=1;
+    while(c<'0'||c>'9'){if(c=='-')f=-1;c=getchar();}
+    while(c>='0'&&c<='9'){x=x*10+c-'0';c=getchar();}
+    return x*f;
+}
+int n,m,op,x,y,k;
+int fa[N],size[N];
+inline int find(int x){return x==fa[x]?x:fa[x]=find(fa[x]);}
+struct node{
+    int l,r,v,w,rnd,size;
+}t[N];
+int cnt,root;
+inline void update(int x){t[x].size=t[lc].size+t[rc].size+t[x].w;}
+inline void rturn(int &x){
+    int c=lc;lc=t[c].r;t[c].r=x;
+    t[c].size=t[x].size;update(x);x=c;
+}
+inline void lturn(int &x){
+    int c=rc;rc=t[c].l;t[c].l=x;
+    t[c].size=t[x].size;update(x);x=c;
+}
+void ins(int &x,int v){//printf("ins %d %d\n",x,v);
+    if(x==0){
+        cnt++;x=cnt;
+        t[cnt].l=t[cnt].r=0;t[cnt].w=t[cnt].size=1;
+        t[cnt].v=v;t[cnt].rnd=rand();
+    }else{
+        t[x].size++;
+        if(t[x].v==v) t[x].w++;
+        else if(v<t[x].v){
+            ins(lc,v);
+            if(t[lc].rnd<t[x].rnd) rturn(x);
+        }else{
+            ins(rc,v);
+            if(t[rc].rnd<t[x].rnd) lturn(x);
+        }
+    }
+}
+void del(int &x,int v){
+    if(x==0) return;
+    if(t[x].v==v){
+        if(t[x].w>1){t[x].w--;t[x].size--;return;}
+        if(lc*rc==0) x=lc+rc;
+        else if(t[lc].rnd<t[rc].rnd) rturn(x),del(x,v);
+        else lturn(x),del(x,v);
+    }else{
+        t[x].size--;
+        if(v<t[x].v) del(lc,v);
+        else del(rc,v);
+    }
+}
+//int kth(int x,int k){
+//    if(x==0)return 0;
+//    if(k<=t[lc].size) return kth(lc,k);
+//    else if(k>t[lc].size+t[x].w) return kth(rc,k-t[lc].size-t[x].w);
+//    else return t[x].v;
+//}
+int kth(int x,int k){
+    if(x==0) return 0;
+    if(k<=t[rc].size) return kth(rc,k);
+    else if(k>t[rc].size+t[x].w) return kth(lc,k-t[rc].size-t[x].w);
+    else return t[x].v;
+}
+int main(){
+    n=read();m=read();
+    for(int i=1;i<=n;i++) fa[i]=i,size[i]=1;
+    while(m--){
+        op=read();
+        if(!op){
+            x=read();y=read();
+            int f1=find(x),f2=find(y);
+            if(f1!=f2){
+                fa[f1]=f2;
+                if(size[f1]!=1) del(root,size[f1]);
+                if(size[f2]!=1) del(root,size[f2]);
+                size[f2]+=size[f1];
+                ins(root,size[f2]);
+            }
+        }else{
+            k=read();//printf("kth %d %d\n",k,t[root].size);
+            if(k>t[root].size) puts("1");
+            else printf("%d\n",kth(root,k));
+        }
+    }
+}

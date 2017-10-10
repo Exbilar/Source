@@ -1,0 +1,14 @@
+g++ -o rand rand.cpp
+g++ -o std std.cpp
+g++ -o my my.cpp
+while true; do  
+        ./rand>rand.in 
+        ./my<rand.in>my.out
+        ./std<rand.in>std.out   
+        if diff std.out my.out; then 
+            printf "AC\n"    
+        else  
+            printf "WA\n" 
+            pause  
+        fi  
+done  

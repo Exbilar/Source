@@ -1,0 +1,48 @@
+#include <cstdio>
+#include <algorithm>
+#include <deque>
+using namespace std;
+
+#define id first
+#define val second
+
+static const int maxm=1e6+10;
+
+typedef pair<int,int> pii;
+
+deque<pii>maxQ;
+deque<pii>minQ;
+
+int n,k,cnt;
+int A[maxm],ans1[maxm],ans2[maxm];
+
+int main(){
+    scanf("%d%d",&n,&k);
+    for(int i=1;i<=n;i++)scanf("%d",&A[i]);
+	
+    for(int i=1;i<=k;i++){
+	while(!maxQ.empty()&&maxQ.back().val<=A[i])maxQ.pop_back();
+	maxQ.push_back(make_pair(i,A[i]));
+	while(!minQ.empty()&&minQ.back().val>=A[i])minQ.pop_back();
+	minQ.push_back(make_pair(i,A[i]));
+    }
+	
+    ans1[++cnt]=minQ.front().val;ans2[cnt]=maxQ.front().val;
+	
+    for(int i=k+1;i<=n;i++){
+	while(!maxQ.empty()&&maxQ.back().val<=A[i])maxQ.pop_back();
+	maxQ.push_back(make_pair(i,A[i]));
+	while(!maxQ.empty()&&maxQ.front().id<i-k+1)maxQ.pop_front();
+		
+	while(!minQ.empty()&&minQ.back().val>=A[i])minQ.pop_back();
+	minQ.push_back(make_pair(i,A[i]));
+	while(!minQ.empty()&&minQ.front().id<i-k+1)minQ.pop_front();
+		
+	ans1[++cnt]=minQ.front().val;ans2[cnt]=maxQ.front().val;
+    }
+	
+    for(int i=1;i<=cnt;i++)printf("%d ",ans1[i]);puts("");
+    for(int i=1;i<=cnt;i++)printf("%d ",ans2[i]);puts("");
+	
+    return 0;
+}

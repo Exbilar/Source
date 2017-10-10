@@ -1,0 +1,50 @@
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+#define REP(i,s,t) for(int i=s;i<=t;i++)
+
+static const int maxm=1e2+10;
+static const int maxn=1e3+10;
+
+typedef long long LL;
+
+struct matrix{
+    LL mtx[maxm][maxm];
+};
+
+LL B[maxn],C[maxn],S[maxn];
+LL m,n,k,MOD;
+
+matrix mul(matrix A,matrix B){
+    matrix ret;
+    memset(ret.mtx,0,sizeof ret.mtx);
+    REP(i,1,k+1)REP(j,1,1)REP(k,1,k)
+	ret.mtx[i][j]=(ret.mtx[i][j]+(A.mtx[i][k]*B.mtx[k][j])%MOD)%MOD;
+    return ret;
+}
+
+matrix pow(matrix A,LL n){
+    if(!n)return A;
+    matrix ret=A;n--;
+    while(n){
+	if(n&1)ret=mul(ret,A);
+	A=mul(A,A);
+	n>>=1;
+    }
+    return ret;
+}
+
+int main(){
+    matrix st,get;
+    scanf("%lld",&k);
+    for(int i=1;i<=k;i++)scanf("%lld",&B[i]);
+    for(int i=1;i<=k;i++)scanf("%lld",&C[i]);
+
+    scanf("%lld%lld%lld",&m,&n,&MOD);
+    
+    
+    
+    return 0;
+}

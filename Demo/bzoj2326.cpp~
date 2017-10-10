@@ -1,0 +1,56 @@
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+#define REP(i,s,t) for(int i=s;i<=t;i++)
+
+typedef long long LL;
+
+static const int maxm=1e2+10;
+
+LL N,MOD;
+
+struct matrix{
+    LL mtx[maxm][maxm];
+};
+
+matrix mul(matrix A,matrix B){
+    matrix ret;
+    memset(ret.mtx,0,sizeof ret.mtx);
+    REP(i,1,3)REP(j,1,3)REP(k,1,3)
+	ret.mtx[i][j]=(ret.mtx[i][j]+(A.mtx[i][k]*B.mtx[k][j]));
+    return ret;
+}
+
+matrix pow(matrix A,LL n){
+    if(!n)return A;
+    matrix ret=A;n-=2;
+    while(n){
+	if(n&1)ret=mul(ret,A);
+	A=mul(A,A);
+	n>>=1;
+    }
+    return ret;
+}
+
+int main(){
+    matrix st,get;
+    st.mtx[1][1]=1;st.mtx[1][2]=1;st.mtx[1][3]=1;
+    get.mtx[1][1]=10;get.mtx[1][2]=0;get.mtx[1][3]=0;
+    get.mtx[2][1]=1;get.mtx[2][2]=1;get.mtx[2][3]=0;
+    get.mtx[3][1]=1;get.mtx[3][2]=1;get.mtx[3][3]=1;
+
+    scanf("%lld%lld",&N,&MOD);
+    LL lg=1;
+    if(lg<=N){
+	if(lg*10<N)st=mul(st,pow(get,lg*10-1));
+	else st=mul(st,pow(get,N-lg+1));
+	get.mtx[1][1]*=10;
+	lg*=10;
+    }
+    
+    printf("%lld\n",st.mtx[1][1]);
+    
+    return 0;
+}

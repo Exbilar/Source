@@ -1,0 +1,37 @@
+#include <cstdio>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+static const double MIN=(1e-8);
+double now,matrix[201][201];
+int n;
+
+bool gauss(){
+    for(int i=0;i<n;i++){
+	int k=i;
+	for(int j=i+1;j<n;j++)
+	    if(fabs(matrix[j][i])>fabs(matrix[k][i]))k=j;
+	if(fabs(now=matrix[k][i])<MIN)return true;
+	for(int j=i;j<=n;j++)swap(matrix[i][j],matrix[k][j]);
+	for(int j=i;j<=n;j++)matrix[i][j]/=now;
+	for(int k=0;k<n;k++){
+	    if(k!=i){
+		now=matrix[k][i];
+		for(int j=i;j<=n;j++)matrix[k][j]-=matrix[i][j]*now;
+	    }
+	}
+    }
+    return false;
+}
+
+int main(){
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+	for(int j=0;j<=n;j++)
+	    scanf("%lf",&matrix[i][j]);
+    if(gauss())printf("No Solution");
+    else for(int i=0;i<n;i++)printf("%.2f\n",matrix[i][n]);
+
+    return 0;
+}
