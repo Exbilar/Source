@@ -22,7 +22,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 
 \date{Latest Update : \today}
-\title{Summer Process table}
+\title{$\mathcal Process$}
 \author{$\mathcal Exbilar$}
 
 \begin{document}
@@ -34,27 +34,83 @@
   \hline
   Date & Name & Source & Status & Algorithm\\
   \hline
-  2017.6.23 & K大数查询 & ZJOI2013 & AC & 线段树套权值线段树\\
+  2017.10.3 & clique & test & AC & 把绝对值化掉,树状数组优化DP\\
   \hline
-  2017.6.24 & 排序 & HEOI2016 & AC & 线段树 + 二分答案\\
+  2017.10.3 & mod & test & AC & 势能线段树,区间取模裸题\\
   \hline
-  2017.6.25 & KIN & POI2015 & AC & 线段树 + 链表\\
+  2017.10.3 & number & test & AC & 恶心的数位DP\\
   \hline
-  2017.7.1 & 小A的糖果 & 洛谷月赛 & AC & 贪心水题\\
+  2017.10.4 & mine & test & AC & 考虑多种情况,考虑第$i$位以及前面两位的情况,恶心的DP\\
   \hline
-  2017.7.1 & 松江1843路 & 洛谷月赛 & AC & 自己写了三分,好像正解是中位数\\
+  2017.10.4 & gcd & test & AC & 用莫比乌斯函数容斥就可以了,考试的时候被卡常了\\
   \hline
-  2017.7.2 & SAM-Toy Cars & POI2005 & AC & 贪心 + 链表\\
+  2017.10.4 & water & test & AC & floodfill裸题,不过没学,当时不会\\
   \hline
-  2017.7.2 & Sasha and Arrary & CodeForces 718C & AC & 线段树维护矩阵乘法\\
+  2017.10.6 & string & test & AC & 开$26$棵线段树,考场被卡常了\\
   \hline
-  2017.7.2 & The Child and Sequence & CodeForces 438D & AC & 势能线段树区间取模\\
+  2017.10.6 & matrix & test & AC & 按列DP,考虑前$i$列$j$列在右区间的方案数\\
   \hline
-  2017.7.2 & 线段树基础练习 & Uoj228 & AC & 势能线段树区间开根\\
+  2017.10.6 & big & test & 理性AC & 字典树上DP\\
   \hline
-  2017.7.2 & 相逢是问候 & SHOI2017 & AC & 势能线段树+欧拉定理,现在还不是太明白那个欧拉的原理,留坑\\
+  2017.10.7 & kurisu & test & AC & 数学+树状数组,考场上取模挂了\\
   \hline
-  2017.7.2 & 上帝与集合的正确用法 & Bzoj3884 & AC & 欧拉定理,虽然加深了理解,但还是不太懂上一题的某个操作\\
+  2017.10.7 & mayuri & test & AC & 约瑟夫问题经典优化\\
+  \hline
+  2017.10.7 & okarin & test & AC & DP+单调性优化,可以在DP转移的过程中保存max\\
+  \hline
+  2017.10.9 & matrix & test & AC & 树状数组+二维数点\\
+  \hline
+  2017.10.9 & present & test & AC & 剩余系+最短路,之前没学\\
+  \hline
+  2017.10.9 & Mahjong & test & AC & 恶心大模拟\\
+  \hline
+  2017.10.10 & Adore & test & AC & 状压DP,对每个点方案数的奇偶性DP\\
+  \hline
+  2017.10.10 & Confess & test & AC & 暴力\\
+  \hline
+  2017.10.10 & Repulsed & test & AC & 自底向上贪心,用DP维护$f_{x,k}$,$g_{x,k}$分别维护$x$子树中距离为$k$未支配的点和剩余的可分配点.\\
+  \hline
+  2017.10.11 & Flowers & CF451E & AC & 容斥原理+组合计数,状压超出的物品\\
+  \hline
+  2017.10.11 & Permutations & CF96D & AC & 类似数位DP的做法,计算大小为$n$的排列逆序对数为$n!\times\frac{n(n-1)}{2}$\\
+  \hline
+  2017.10.11 & 传染病控制 & NOIP & AC & 树上按深度搜索\\
+  \hline
+  2017.10.11 & 斗地主 & NOIP & AC & 贪心+搜索\\
+  \hline
+  2017.10.12 & lost & test & AC & 树上维护凸包,二分弹栈\\
+  \hline
+  2017.10.12 & knows & test & AC & 线段树维护极长子序列\\
+  \hline
+  2017.10.12 & starway & test & AC & Prim最小生成树\\
+  \hline
+  2017.10.13 & 解方程 & NOIP & AC & 取模乱搞\\
+  \hline
+  2017.10.13 & 飞扬的小鸟 & NOIP & AC & 恶心的DP,类似背包\\
+  \hline
+  2017.10.15 & 火柴排队 & NOIP & AC & 贪心,树状数组求逆序对\\
+  \hline
+  2017.10.15 & 转圈游戏 & NOIP & AC & 水题,直接快速幂模拟\\
+  \hline
+  2017.10.15 & CF Round Div2 & CF  & AC A,B,C & 前三题以结论为主,比较简单,后面两题不会做.\\
+  \hline
+  2017.10.15 & 母亲的牛奶 & USACO & AC & 暴力搜索\\
+  \hline
+  2017.10.15 & Mashmokh & CF414B & AC & DP计数问题,$f[i][j] = \sum_{k|j}{f[i - 1][k]}$\\
+  \hline
+  2017.10.16 & sequence & test & AC & 莫队 + two-pointers预处理\\
+  \hline
+  2017.10.16 & graph & test & AC & 邻接矩阵乘法,或倍增floyd,这个考场上不会\\
+  \hline
+  2017.10.16 & work & test & AC & 11:00才看懂题,直接模拟就好了\\
+  \hline
+  2017.10.16 & CF Round Div2 & CF & AC A,B,C,D & 题面复杂,主要是以推结论为主\\
+  \hline
+  2017.10.17 & slope & test & AC & 判断一下相邻两点的斜率就可以了,注意负数\\
+  \hline
+  2017.10.17 & segment & test & AC & 加法贡献的概率为$\frac{1}{k+1}$,$k$表示赋值个数,赋值操作为他们的平均数\\
+  \hline
+  2017.10.17 & Bath Queue & CF28C & AC & 期望DP,考虑$f_{i,j,k}$表示$i$个房间,$j$个人,$k$个长度,考虑$i$的长度是否为$k$\\
   \hline
   
 \end{longtable}
