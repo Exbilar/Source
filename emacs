@@ -18,6 +18,9 @@
 
 (setq default-frame-alist '((height . 50) (width . 90) (menu-bar-lines . 20) (tool-bar-lines . 0)))
 
+(tool-bar-mode 0)
+(ido-mode t)
+
 (setq backup-directory-alist (quote (("." . "~/.backups"))))
 
 (require 'package)
@@ -56,7 +59,6 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (spacemacs-dark)))
@@ -67,7 +69,11 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-	(cdlatex latex-math-preview auctex multiple-cursors dracula-theme sml-mode all-the-icons-dired xwidgete auto-complete rainbow-blocks rainbow-mode spaceline-all-the-icons spacemacs-theme ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make google-translate golden-ratio gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
+	(cdlatex latex-math-preview auctex multiple-cursors dracula-theme sml-mode all-the-icons-dired xwidgete auto-complete rainbow-blocks rainbow-mode spaceline-all-the-icons spacemacs-theme ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text mmm-mode markdown-toc macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make google-translate golden-ratio gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link)))
+ '(spaceline-all-the-icons-icon-set-bookmark (quote bookmark))
+ '(spaceline-all-the-icons-icon-set-git-ahead (quote arrow))
+ '(spaceline-all-the-icons-icon-set-modified (quote toggle))
+ '(spaceline-all-the-icons-icon-set-sun-time (quote rise/set)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
