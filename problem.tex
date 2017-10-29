@@ -1,0 +1,220 @@
+\documentclass[]{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{fancyvrb}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[affil-it]{authblk}
+\usepackage[top = 1.0in, bottom = 1.0in, left = 1.0in, right = 1.0in]{geometry}
+\usepackage{amsthm}
+
+\newcommand\spc{\vspace{6pt}}
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\date{}
+\title{Noip模拟赛}
+\author{$\mathcal Exbilar$}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    题目名称 & space & reverse & arcane\\
+    \hline
+    时间限制 & 1s & 1s & 1s\\
+    \hline
+    空间限制 & 512MB & 512MB & 512MB\\
+    \hline
+    文件名 & space.c/cpp/pas/in/out & reverse.c/cpp/pas/in/out & arcane.c/cpp/pas/in/out\\    
+    \hline
+    题目类型 & 传统 & 传统 & 传统\\
+    \hline
+    是否开O2 & 否 & 否 & 否\\
+    \hline
+    测试点数量 & 10 & 20 & 20\\
+    \hline
+    
+  \end{tabular}
+  
+  题目很水,请AK的同学不要大声喧哗,以打扰他人AK
+
+  所有输入都在int32范围以内
+  
+\end{center}
+
+\newpage
+
+\section{宇宙树}
+
+\subsection{约束}
+
+\begin{itemize}
+  
+\item TimeLimit : 1s
+
+\item MemoryLimit : 512MB
+
+\item FileName : space.c/cpp/pas/in/out  
+  
+\end{itemize}
+
+\subsection{题目描述}
+
+直到今天,面对无边的星空,奥术大师阿斯蒂芬还能清晰地回忆起宇宙刚诞生的那个时候......\\
+
+在宇宙最开始的时候什么也没有,突然就爆发了一个奇点(可以认为它是根),它迅速地开始增长,扩散......对于新加入的一个奇点,它会等概率地插在任意一个不饱满的奇点的左边或右边(我们定义一个奇点是饱满的当且仅当它的左右已经有了两个儿子奇点)......这样逐渐形成了现在的宇宙.直到今天,已经有$n$个奇点,而你作为宇宙学家,需要计算这个宇宙的期望大小.当然,这个宇宙是一棵树一样的结构,它的大小就是它的高度.我们定义一棵树的高度就是它的根到最深的叶子节点的路径节点数.
+
+\subsection{输入格式}
+
+一个整数$n$
+
+\subsection{输出格式}
+
+两行整数,第一行表示分子,第二行表示分母,各对$10^{9}+7$取模.
+
+不用约分!
+
+\subsection{样例输入}
+2
+\subsection{样例输出}
+4
+
+2
+\subsection{约定}
+
+对于$30\%$的数据,满足$n \le 10$.
+
+对于$50\%$的数据,满足$n \le 100$
+
+对于$100\%$的数据,满足$n \le 500$.
+
+\newpage
+
+\section{反物质}
+
+\subsection{约束}
+
+\begin{itemize}
+  
+\item TimeLimit : 1s
+
+\item MemoryLimit : 512MB
+
+\item FileName : reverse.c/cpp/pas/in/out
+  
+\end{itemize}
+
+\subsection{题目描述}
+
+阿斯蒂芬作为一名奥术大师,自然很清楚反物质是个什么玩意,并且在他的法杖中就有一个奇妙的反物质序列,这些反物质排列起来能产生奇妙的效果.有$n$个反物质,每个反物质元素都有一个能量$P_i$,其中$P_i$是一个$1$到$n$的排列.对于这个反物质序列$P$,定义任意一个字典序小于或等于它的排列$K_i$,那么这个反物质序列的能量总和为
+\begin{equation}
+  \sum^{M}_{i=1}R(K_i)
+\end{equation}
+其中$R(K_i)$表示序列$K_i$中的逆序对数量,$M$表示所有字典序小于或等于$P$的排列个数.
+
+作为诺贝尔奖的得主,你需要计算阿斯蒂芬法杖中的反物质序列能量总和,阿斯蒂芬当然清楚答案,所以他想那这个考考你到底是否具备这样的实力.
+
+\subsection{输入格式}
+输入包含两行.
+
+第一行一个数$n$.
+
+第二行有$n$个数,第$i$个数表示$P_i$,满足$P$是$1$到$n$的一个排列.
+
+\subsection{输出格式}
+
+一个数,表示答案.
+
+由于答案可能很大,所以你只要输出答案对$10^{9}+7$取模的值就可以了.
+
+\subsection{样例输入}
+3
+
+2 1 3
+\subsection{样例输出}
+2
+\subsection{约定}
+
+对于$30\%$的数据,满足$n \le 100$.
+
+对于$60\%$的数据,满足$n \le 1000$.
+
+对于$100\%$的数据,满足$n \le 1000000$.
+
+\newpage
+
+\section{奥术}
+
+\subsection{约束}
+
+\begin{itemize}
+  
+\item TimeLimit : 1s
+
+\item MemoryLimit : 512MB
+
+\item FileName : arcane.c/cpp/pas/in/out
+  
+\end{itemize}
+
+\subsection{题目描述}
+
+看他的名字就知道,奥术大师阿斯蒂芬最精通的东西就是奥术了.所谓奥术,魔法的一类分支,它们主要是指一种由于奥术知识的积累而产生的能为人所理解,使用的魔法,可以类比于科学.然而,奥术的学习也是十分枯燥的,分析术学,线性代术......都是奥术学院的必修课.其中阿斯蒂芬对于"术列"研究十分透彻.其中最具代表,最经典的一类便是“术列”操作问题了.这类问题通常这样组成的:
+
+有一个$n$个元素的术列,每个"术"包含两个值$u_i$,$v_i$,其中$u_i$代表奥术强度,$v_i$代表属性,其中$u_i$初值为$0$,$v_i$初值为$i$,要你支持以下的操作:
+
+\begin{itemize}
+\item 将$[l,r]$内元素的$v_i$都改为$t$,其中区间内的$u_i$变大$|t-v_i|$.
+\item 询问$\sum_{i=L}^{R}u_{i}$的值.
+\end{itemize}
+
+\subsection{输入格式}
+
+第一行两个个正整数$n$,$m$,其中$n$表示有$n$个元素.
+
+接下来有$m$行,表示操作个数,每行第一个数是$opt$.
+
+若$opt=1$,后面有三个数分别为$L,R,t$.
+
+若$opt=2$,后面有两个数分别为$L,R$.
+
+\subsection{输出格式}
+
+对于$opt=2$的操作,按顺序每行输出一个答案.
+
+\subsection{输入样例}
+
+5 4
+
+1 2 2 1943028792
+
+1 1 1 622451069
+
+1 1 2 63949755
+
+2 1 1
+
+\subsection{输出样例}
+
+1180952382
+
+\subsection{约定}
+
+对于$30\%$的数据,满足$1 \le n \le 1000$,$1 \le m \le 1000$.
+
+对于$100\%$的数据,满足$1 \le n \le 10^5$,$1 \le m \le 10^5$.
+
+\end{document}
