@@ -1,0 +1,26 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/exbilar/" . "Source/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ 
+)
+
+;; ----- ido-work-file-list -----
+(
+ 
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/exbilar/" (23030 47005 619158 767000) ".ICEauthority" ".emacs" ".java/" ".emacs~" ".hmcl/" ".pki/" ".dmrc" ".backups/" ".gnupg/" ".xsession-errors.old" ".presage/" "视频/" ".xinputrc" ".spacemacs" "test/" "Source/" ".viminfo" "lemon_v1.2_beta_src/" ".newsrc.eld" "公共的/" ".gvfs/" ".lantern/" "图片/" ".emacs.d/" "pix/" ".config/" ".bash_logout" ".profile" ".compiz/" ".ssh/" ".bash_history" ".cache/" ".vimrc" ".zcompdump" "examples.desktop" ".gnome/" ".mozilla/" "音乐/" "模板/" "../" ".w3m/" "桌面/" ".local/" ".thunderbird/" ".macromedia/" ".byteexec/" ".xsession-errors" ".apport-ignore.xml" ".gconf/" "文档/" ".wine/" ".gitconfig" ".sogouinput/" ".bashrc" ".dbus/" ".sudo_as_admin_successful" ".kingsoft/" "下载/" ".adobe/" ".newsrc" ".minecraft/" ".Xauthority" "./")
+
+ ("/home/exbilar/Source/" (23029 55304 792732 188000) ".git/" "vijos/" "README.md" "CodeForces/" "uva/" "others/" "Atcoder/" "hdu/" "spoj/" "bzoj/" "../" "process.tex" "python/" "poj/" "problem.tex" "emacs" "uoj/" "loj/" "solution.tex" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
