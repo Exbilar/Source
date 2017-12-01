@@ -7,12 +7,10 @@
 (setq-default tab-width 4)
 (setq tab-width 4 indent-tabs-mode t c-basic-offset 4)
 (setq auto-image-file-mode t)
-(setq display-time-day-and-date t)
-(display-time-mode 1)
 (global-hl-line-mode t)
 ;;(electric-pair-mode t)
-(set-frame-parameter (selected-frame) 'alpha (list 85 85))
-(add-to-list 'default-frame-alist (cons 'alpha(list 85 85)))
+;(set-frame-parameter (selected-frame) 'alpha (list 85 85))
+;(add-to-list 'default-frame-alist (cons 'alpha(list 85 85)))
 (global-linum-mode t)
 (cua-mode t)
 
@@ -20,7 +18,7 @@
 (tool-bar-mode 0)
 (setq backup-directory-alist (quote (("." . "~/.backups"))))
 
-(ido-mode t)
+;;(ido-mode t)
 (global-set-key (kbd "M-x") 'smex)
 
 (require 'package)
@@ -41,7 +39,7 @@
 ;;;;;改变emacs标题栏的标题
 (setq frame-title-format "Exbilar's %b")
 
-(setq ring-bell-function 'ignore)
+;(setq ring-bell-function 'ignore)
 
 ;;;;;指针不要闪，我得眼睛花了
 (blink-cursor-mode -1)
@@ -74,9 +72,8 @@
  '(custom-safe-themes
    (quote
 	("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
- '(display-time-mode t)
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (spacemacs-theme rainbow-delimiters)))
+ '(package-selected-packages (quote (flycheck spacemacs-theme rainbow-delimiters)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -84,6 +81,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Fantasque Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 113 :width normal)))))
+ '(default ((t (:family "Monaco" :foundry "APPL" :slant normal :weight normal :height 98 :width normal)))))
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;;(add-to-list 'load-path "~/.emacs.d/vendor/emacs-powerline")
+
+(require 'powerline)
+(powerline-default-theme)
+
+(global-flycheck-mode)
