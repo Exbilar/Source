@@ -42,6 +42,6 @@ int main(){
 	}
 	
 	printf("%lld\n",f[n]);
-
+	
 	return 0;
 }
