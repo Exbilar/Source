@@ -89,7 +89,7 @@ void solve(int l,int r){
 	
 	for(int i = 0;i < n;i++) A[i] = 0,B[i] = 0;
 	for(int i = l;i <= mid;i++) A[i - l] = (f[i] * finv[i - 1]) % mod;
-	for(int i = 1;i <= r - l;i++) B[i - 1] = (1LL * two[i] * finv[i]) % mod;   
+	for(int i = 1;i <= r - l;i++) B[i - 1] = (1LL * two[i] * finv[i]) % mod;
 	
 	NTT(A,1);
 	NTT(B,1);
