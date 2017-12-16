@@ -49,29 +49,29 @@ LL getPrime(int N){
             }
         }
     }
-	for(int i = 1;i <= N;i++) M[i] = M[i - 1] + mu[i];
+    for(int i = 1;i <= N;i++) M[i] = M[i - 1] + mu[i];
 }
 
 LL calc(LL x){
-	if(x <= lmt) return M[x];
-	if(h.count(x)) return h[x];
-	LL res = 1;
-	for(LL l = 2,r = 0;l <= x;l = r + 1){
-		r = x / (x / l);
-		res -= calc(x / l) * (r - l + 1);
-	}
-	return h[x] = res;
+    if(x <= lmt) return M[x];
+    if(h.count(x)) return h[x];
+    LL res = 1;
+    for(LL l = 2,r = 0;l <= x;l = r + 1){
+        r = x / (x / l);
+        res -= calc(x / l) * (r - l + 1);
+    }
+    return h[x] = res;
 }
 
 int main(){
 	
-	LL l,r;
+    LL l,r;
 	
-	read(l),read(r);
+    read(l),read(r);
 	
-	getPrime(lmt = pow(r,2 / (double) 3));
+    getPrime(lmt = pow(r,2 / (double) 3));
 	
-	printf("%lld\n",calc(r) - calc(l - 1));
+    printf("%lld\n",calc(r) - calc(l - 1));
 	
     return 0;
 }
