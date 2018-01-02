@@ -96,10 +96,10 @@ void solve(int l,int r){
 	
 	for(int i = 0;i < n;i++) A[i] = (1LL * A[i] * B[i]) % mod;
 	
-	NTT(A,-1);	
+	NTT(A,-1);
 	
 	for(int i = mid + 1;i <= r;i++) f[i] = (f[i] + A[i - l - 1]) % mod;
-		
+	
 	solve(mid + 1,r);
 }
 

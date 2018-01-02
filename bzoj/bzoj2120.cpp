@@ -75,7 +75,6 @@ void modify_del(int pos){
 		if(num[mdf[pos].pre] == 1) cur++;
 		if(num[mdf[pos].nxt] == 0) cur--;
 	}
-
 	A[mdf[pos].p] = mdf[pos].pre;
 }
 
