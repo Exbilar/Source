@@ -19,7 +19,7 @@ void solve1(int l,int r,int L,int R){
 	for(int i = L;i <= R && i <= mid;i++)
 		if((double) A[i] + sqrt(mid - i) >= mx)
 			pos = i,mx = (double) A[i] + sqrt(mid - i);
-			
+	
 	f[mid] = A[pos] + ceil(sqrt(mid - pos));
 	
 	solve1(l,mid - 1,L,pos);
@@ -34,7 +34,7 @@ void solve2(int l,int r,int L,int R){
 	for(int i = R;i >= L && i >= mid;i--)
 		if((double) A[i] + sqrt(i - mid) >= mx)
 			pos = i,mx = (double) A[i] + sqrt(i - mid);
-			
+	
 	g[mid] = A[pos] + ceil(sqrt(pos - mid));
 	
 	solve2(l,mid - 1,L,pos);
