@@ -1,0 +1,47 @@
+#+LATEX_CLASS: article
+#+LATEX_HEADER: \usepackage{ctex}
+#+LATEX_COMPILER: xelatex
+#+DATE: \today
+#+TITLE: TODO List
+
+* TODO Algorithm [0%]
+- [-] CDQ分治
+  - [-] Bzoj [80%]
+    - [X] Bzoj4538
+    - [X] Bzoj2716
+    - [X] Bzoj1492
+    - [X] Bzoj4025
+    - [ ] Bzoj2149
+- [ ] 点分治[0%]
+  - [ ] Bzoj3648
+- [ ] Burnside引理 ♂ Polya定理[0%]
+  - [ ] 课件 [0%]
+    - [ ] HNOI2008 Cards
+    - [ ] POJ2154 Color
+- [ ] Min_25筛
+  - [ ] 讲解:https://post.icpc-camp.org/d/782-spoj-divcnt3
+  - [ ] fjzzq:http://www.cnblogs.com/zzqsblog/p/8302815.html
+- [-] 线性代数[0%]
+  - [-] 课件 [20%]
+    - [ ] 矩阵
+    - [ ] 行列式
+    - [X] 线性基
+    - [ ] 特征向量和特征行列式
+    - [ ] 拟阵
+- [-] 数据结构[33%]
+  - [ ] LCT [0%]
+    - [ ] Bzoj3779
+  - [X] 主席树 [100%]
+    - [X] Bzoj3653
+  - [ ] 线段树 [0%]
+    - [ ] Bzoj4422
+    - [ ] Bzoj4568
+
+* TODO 杂题选做 [16%]
+- [ ] Bzoj3711
+- [ ] 51nod1816
+- [ ] 51nod1600
+- [ ] CF889E
+- [ ] Bzoj4561
+- [ ] Bzoj2063!!!
+- [X] Bzoj2888
