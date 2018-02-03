@@ -5,13 +5,12 @@
 
 using std :: max;
 using std :: min;
-using std :: string;
 
 typedef long long LL;
 
 static const int INF = 1 << 30;
 static const LL oo = 1LL << 62;
-static const int maxm = 1e6 + 10;
+static const int maxm = 2e5 + 10;
 
 template <class T> inline bool chkmax(T &x,T y){
     return x < y ? x = y,true : false;
@@ -28,12 +27,16 @@ template <class T> inline void read (T &in){
     in = in * f;
 }
 
-char chr[maxm];
-string str[maxm];
-int n,m;
+int fst[maxm],nxt[maxm],to[maxm],col[maxm],deg[maxm];
+int n,m,cnt;
+
+void ins(int f,int t){
+	nxt[++cnt] = fst[f],to[cnt] = t,fst[f] = cnt;
+	nxt[++cnt] = fst[t],to[cnt] = f,fst[t] = cnt;
+}
 
 struct Suffix_Automaton{
-	int len[maxm],size[maxm],fail[maxm],ch[maxm][26],ddf[maxm],cnt[maxm];
+	int len[maxm * 20],size[maxm * 20],fail[maxm * 20],ch[maxm * 20][15];
 	int lst,rt,sz;
 
 	Suffix_Automaton(){
@@ -41,16 +44,15 @@ struct Suffix_Automaton{
 		len[rt] = fail[rt] = 0;
 	}
 
-	void insert(int v){
+	int insert(int v,int lst){
 		int x = ++sz,cur = lst;
-		len[x] = len[lst] + 1,size[x] = 1;
-		lst = x;
+		len[x] = len[lst] + 1; size[x] = 1;
 
 		while(cur && !ch[cur][v]) ch[cur][v] = x,cur = fail[cur];
-		if(!cur) return fail[x] = rt,void();
+		if(!cur) return fail[x] = rt,x;
 
 		int pos = ch[cur][v];
-		if(len[pos] == len[cur] + 1) return fail[x] = pos,void();
+		if(len[pos] == len[cur] + 1) return fail[x] = pos,x;
 
 		int clone = ++sz;
 		fail[clone] = fail[pos];
@@ -59,54 +61,46 @@ struct Suffix_Automaton{
 
 		fail[x] = fail[pos] = clone;
 		while(cur && ch[cur][v] == pos) ch[cur][v] = clone,cur = fail[cur];
+
+		return x;
 	}
 
-	void dfs(string str,int n,int pos){
-		int x = rt;
-		for(int i = 0;i < n;i++){
-			x = ch[x][str[i] - 'a'];
-			int cur = x;
-			while(cur && ddf[cur] != pos)
-				ddf[cur] = pos,cnt[cur]++,cur = fail[cur];
-		}
-	}
-
-	int solve(char *str,int n){
-		int x = rt;
-		for(int i = 0;i < n;i++){
-			int v = str[i] - 'a';
-			if(ch[x][v]) x = ch[x][v];
-			else return 0;
-		}
-		return cnt[x];
-	}
-
-	void insertStr(char *str,int n){
-		for(int i = 0;i < n;i++) insert(str[i] - 'a');
+	void solve(){
+		LL res = 0;
+		for(int i = 1;i <= sz;i++) res += len[i] - len[fail[i]];
+		printf("%lld\n",res);
 	}
 	
 }SAM;
 
+void dfs(int x,int fa,int lst){
+	int np = SAM.insert(col[x],lst);
+	for(int u = fst[x];u;u = nxt[u]){
+		int v = to[u];
+		if(v == fa) continue;
+		dfs(v,x,np);
+	}
+}
+
 int main(){
 
-	read(n),read(m);
-
-	for(int i = 1;i <= n;i++){
-		scanf("%s",chr);
-		str[i] = string(chr);
-		SAM.lst = SAM.rt;
-		SAM.insertStr(chr,strlen(chr));
-	}
-
-	for(int i = 1;i <= n;i++){
-		int len = str[i].size();
-		SAM.dfs(str[i],len,i);
-	}
+//	freopen("bzoj3926.in","r",stdin);
 	
-	while(m--){
-		scanf("%s",chr);
-		printf("%d\n",SAM.solve(chr,strlen(chr)));
+	read(n),read(m);
+	for(int i = 1;i <= n;i++) read(col[i]);
+
+	int u,v;
+	for(int i = 1;i < n;i++){
+		read(u); read(v); ins(u,v);
+		deg[u]++,deg[v]++;
 	}
 
+	for(int i = 1;i <= n;i++){
+		if(deg[i] != 1) continue;
+		dfs(i,0,SAM.rt);
+	}
+
+	SAM.solve();
+	
 	return 0;
 }
