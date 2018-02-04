@@ -19,8 +19,9 @@
     - [ ] HNOI2008 Cards
     - [ ] POJ2154 Color
 - [ ] Min_25筛
-  - [ ] 讲解:https://post.icpc-camp.org/d/782-spoj-divcnt3
-  - [ ] fjzzq:http://www.cnblogs.com/zzqsblog/p/8302815.html
+  - [ ] [[https://post.icpc-camp.org/d/782-spoj-divcnt3][ICPC-Camp]]
+  - [ ] [[http://www.cnblogs.com/zzqsblog/p/8302815.html][fjzzq]]
+  - [ ] [[http://www.spoj.com/problems/TEES/][SPOJ]]
 - [-] 线性代数[0%]
   - [-] 课件 [20%]
     - [ ] 矩阵
@@ -28,11 +29,12 @@
     - [X] 线性基
     - [ ] 特征向量和特征行列式
     - [ ] 拟阵
-- [-] 数据结构[33%]
+- [-] 数据结构[0%]
   - [ ] LCT [0%]
     - [ ] Bzoj3779
-  - [X] 主席树 [100%]
+  - [-] 主席树 [50%]
     - [X] Bzoj3653
+    - [ ] Bzoj1171
   - [ ] 线段树 [0%]
     - [ ] Bzoj4422
     - [ ] Bzoj4568
