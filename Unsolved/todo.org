@@ -4,7 +4,7 @@
 #+DATE: \today
 #+TITLE: TODO List
 
-* TODO Algorithm [0%]
+* TODO Algorithm [16%]
 - [-] CDQ分治
   - [-] Bzoj [80%]
     - [X] Bzoj4538
@@ -18,10 +18,10 @@
   - [ ] 课件 [0%]
     - [ ] HNOI2008 Cards
     - [ ] POJ2154 Color
-- [ ] Min_25筛
-  - [ ] [[https://post.icpc-camp.org/d/782-spoj-divcnt3][ICPC-Camp]]
-  - [ ] [[http://www.cnblogs.com/zzqsblog/p/8302815.html][fjzzq]]
-  - [ ] [[http://www.spoj.com/problems/TEES/][SPOJ]]
+- [X] Min_25筛
+  - [X] [[https://post.icpc-camp.org/d/782-spoj-divcnt3][ICPC-Camp]]
+  - [X] [[http://www.cnblogs.com/zzqsblog/p/8302815.html][fjzzq]]
+  - [X] [[http://www.spoj.com/problems/TEES/][SPOJ]]
 - [-] 线性代数[0%]
   - [-] 课件 [20%]
     - [ ] 矩阵
@@ -37,6 +37,7 @@
     - [ ] Bzoj1171
   - [ ] 线段树 [0%]
     - [ ] Bzoj4422
+    - [ ] Bzoj3064
     - [ ] Bzoj4568
 
 * TODO 杂题选做 [16%]
