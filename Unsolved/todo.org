@@ -45,7 +45,7 @@
 - [ ] 51nod1600
 - [ ] CF889E
 - [ ] Bzoj4561
-- [ ] AGC089F
+- [ ] ARC089F
 - [ ] Atcoder tenka1 2017E
 - [ ] AGC021D
 - [X] Bzoj2063!!!
