@@ -23,28 +23,30 @@
   - [X] [[http://www.cnblogs.com/zzqsblog/p/8302815.html][fjzzq]]
   - [X] [[http://www.spoj.com/problems/TEES/][SPOJ]]
 - [-] 线性代数[0%]
-  - [-] 课件 [20%]
+  - [-] 课件 [25%]
     - [ ] 矩阵
     - [ ] 行列式
     - [X] 线性基
     - [ ] 特征向量和特征行列式
-    - [ ] 拟阵
-- [-] 数据结构[0%]
+- [-] 数据结构[33%]
   - [ ] LCT [0%]
     - [ ] Bzoj3779
-  - [-] 主席树 [50%]
+  - [X] 主席树 [100%]
     - [X] Bzoj3653
-    - [ ] Bzoj1171
-  - [ ] 线段树 [0%]
+    - [X] Bzoj1171
+  - [-] 线段树 [33%]
     - [ ] Bzoj4422
     - [ ] Bzoj3064
-    - [ ] Bzoj4568
+    - [X] Bzoj4568
 
-* TODO 杂题选做 [16%]
-- [ ] Bzoj3711
+* TODO 杂题选做 [42%]
+- [X] Bzoj3711
 - [ ] 51nod1816
 - [ ] 51nod1600
 - [ ] CF889E
 - [ ] Bzoj4561
-- [ ] Bzoj2063!!!
+- [ ] AGC089F
+- [ ] Atcoder tenka1 2017E
+- [ ] AGC021D
+- [X] Bzoj2063!!!
 - [X] Bzoj2888
