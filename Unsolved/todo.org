@@ -39,13 +39,14 @@
     - [ ] Bzoj3064
     - [X] Bzoj4568
 
-* TODO 杂题选做 [42%]
+* TODO 杂题选做 [27%]
 - [X] Bzoj3711
 - [ ] 51nod1816
 - [ ] 51nod1600
 - [ ] CF889E
 - [ ] Bzoj4561
-- [ ] ARC089F
+- [ ] AGC089F
+- [ ] CF704D
 - [ ] Atcoder tenka1 2017E
 - [ ] AGC021D
 - [X] Bzoj2063!!!
