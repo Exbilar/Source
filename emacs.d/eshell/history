@@ -1,0 +1,38 @@
+g++ -o bike bike.cpp 
+./bike 
+exit
+exit
+gcc -o ex03 ex03.c
+./ex03
+gcc -o ex04 ex04.c
+gcc -o ex04 ex04.c
+./ex04
+gcc -o ex04 ex04.c
+./ex04
+gcc -o ex05 ex05.c
+./ex05.c
+gcc -o ex05 ex05.c
+gcc -o ex05 ex05.c
+./ex05
+gcc -o ex05 ex05.c
+./ex05
+gcc -o ex05 ex05.c
+./ex05
+exit
+xelatex answer02.tex 
+xelatex answer02.tex 
+xelatex answer02.pdf 
+xelatex answer02.tex
+xelatex answer02.tex 
+exit
+xelatex answer02.tex 
+xelatex answer02.tex 
+cd
+ls
+ls
+cd
+exit
+exit
+a
+exit
+exit

@@ -1,0 +1,316 @@
+;;;;Emacs Basic Configures
+
+(global-set-key "\C-m" 'newline-and-indent)
+(global-set-key (kbd "C-<return>") 'newline)
+(show-paren-mode t)
+(setq-default indent-tabs-mode nil) 
+(setq column-number-mode t)
+(setq line-number-mode t)
+(setq-default tab-width 4)
+(setq tab-width 4 indent-tabs-mode t c-basic-offset 4)
+(setq c-default-style "awk")
+(setq auto-image-file-mode t)
+(setq auto-save-default nil)
+(global-hl-line-mode t)
+(electric-pair-mode t)
+(setq ring-bell-function #' ignore)
+(cua-mode t)
+
+;;(set-frame-font "Fantasque Sans Mono-15")
+(set-frame-font "Monaco-13")
+
+(setq default-frame-alist '((height . 45) (width . 90) (menu-bar-lines . 20) (tool-bar-lines . 0)))
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
+;; shell setting
+(setq-default shell-file-name "/bin/zsh")
+
+(setq backup-directory-alist (quote (("." . "~/.backups"))))
+
+(blink-cursor-mode -1)
+
+(setq scroll-step 1
+        scroll-margin 3
+        scroll-conservatively 10000)
+
+
+;; set this in all c-based programming modes
+(add-hook 'c-mode-common-hook
+          (lambda ()
+             (c-set-offset 'case-label '+)))
+
+;;; Fira Code
+(when (window-system)
+  (set-frame-font "Fira Code"))
+(let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
+               (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
+               (36 . ".\\(?:>\\)")
+               (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
+               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+               (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
+               (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
+               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
+               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+               (48 . ".\\(?:x[a-zA-Z]\\)")
+               (58 . ".\\(?:::\\|[:=]\\)")
+               (59 . ".\\(?:;;\\|;\\)")
+               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
+               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+               (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
+               (91 . ".\\(?:]\\)")
+               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+               (94 . ".\\(?:=\\)")
+               (119 . ".\\(?:ww\\)")
+               (123 . ".\\(?:-\\)")
+               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+               (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)")
+               )
+             ))
+  (dolist (char-regexp alist)
+    (set-char-table-range composition-function-table (car char-regexp)
+                          `([,(cdr char-regexp) 0 font-shape-gstring]))))
+
+;;;Fira-Code Ends
+
+;;flycheck
+
+;;;;key bindings
+
+(setq mac-option-modifier 'meta)   ;;for mac
+(setq mac-command-modifier 'super) ;;for mac
+
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+
+;;; macOSX
+
+(setq ns-pop-up-frames nil)
+
+;;;;melpa Settings
+
+(require 'package)
+(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+						 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/"))
+
+(package-initialize)
+
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+
+
+;;;; add-to-list
+
+(add-to-list 'load-path "~/.emacs.d/vendor/emacs-doom-themes")
+(add-to-list 'load-path "~/.emacs.d/vendor/moe-theme")
+(add-to-list 'load-path "~/.emacs.d/vendor/rtf-mode")
+
+;;;; moe-themes
+
+(require 'moe-theme)
+(require 'rtf-mode)
+
+;;;; doom-themes
+
+(require 'doom-themes)
+
+(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+(load-theme 'doom-one t)
+
+;;(doom-themes-visual-bell-config)
+
+(doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
+
+(doom-themes-org-config)
+
+;;;;highlight parenthess & rainbow-delimiters
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(require 'highlight-parentheses)
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(setq hl-paren-colors '(t t))
+(defface hl-paren-face '((t (:underline t))) "face for enclosing parens" :group 'highlight-parentheses)
+
+(global-highlight-parentheses-mode t)
+
+;;;;Compile C++ Program
+
+(defun compile-file ()
+  (interactive)
+  (compile (format "g++ -o %s %s -g "  (file-name-sans-extension (buffer-name))(buffer-name))))
+(defun compile-file-O2 ()
+  (interactive)
+  (compile (format "g++ -o %s %s -g -O2"  (file-name-sans-extension (buffer-name))(buffer-name))))
+
+;;(global-set-key [f5] 'gud-gdb)
+;;(global-set-key [f9] 'compile-file)
+;;(global-set-key [f10] 'quickrun)
+
+;;;; org and Latex
+
+(setq org-startup-indented t)
+;;(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
+;;(add-hook 'latex-mode-hook 'turn-on-cdlatex)   ; with Emacs latex mode
+
+;(add-hook 'LaTeX-mode-hook
+;		  (lambda ()
+;			(setq TeX-auto-untabify t     ; remove all tabs before saving
+;				  TeX-engine 'xetex       ; use xelatex default
+;				  TeX-show-compilation t) ; display compilation windows
+;			(TeX-global-PDF-mode t)       ; PDF mode enable, not plain
+;			(setq TeX-save-query nil)
+;			(imenu-add-menubar-index)
+;			(define-key LaTeX-mode-map (kbd "TAB") 'TeX-complete-symbol)
+;			))
+
+;(mapc (lambda (mode)
+;		(add-hook 'LaTeX-mode-hook mode))
+;	  (list 'auto-fill-mode
+;			'LaTeX-math-mode
+;			'turn-on-reftex
+;			))
+
+;;;; fix c++-mode-face
+
+(defun fix-c++-mode-face ()
+  (font-lock-add-keywords
+   nil
+   '(("(\\([a-zA-Z_][a-zA-Z_0-9]*\s+\\)[&\*]\s+[+-]?[a-zA-Z_0-9]+" (1 nil t)))
+   'append))
+(add-hook 'c++-mode-hook 'fix-c++-mode-face)
+
+;;;;Some Configures are not used
+
+;;(setq-default cursor-type 'bar)
+;;(set-frame-parameter (selected-frame) 'alpha (list 85 85))
+;;(add-to-list 'default-frame-alist (cons 'alpha(list 85 85)))
+;;(global-linum-mode t)
+
+;;;;setting of w3m
+
+;;(autoload 'w3m "w3m" "interface for w3m on emacs" t)
+;;(setq w3m-command-arguments '("-cookie" "-F"))
+;;(setq w3m-use-cookies t)
+;;(setq w3m-home-page "http://www.baidu.com/")
+;;(require 'mime-w3m)
+;;(setq w3m-default-display-inline-image t)
+;;(setq w3m-default-toggle-inline-images t)
+
+;;;;spaceline-settings
+
+;;(add-to-list 'load-path "~/.emacs.d/vendor/spaceline-master")
+;;(require 'spaceline-config)
+;;(spaceline-spacemacs-theme)
+
+;;;;winum-mode settings
+
+;;(setq winum-keymap
+;;    (let ((map (make-sparse-keymap)))
+;;      (define-key map (kbd "C-`") 'winum-select-window-by-number)
+;;      (define-key map (kbd "C-²") 'winum-select-window-by-number)
+;;      (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
+;;      (define-key map (kbd "M-1") 'winum-select-window-1)
+;;      (define-key map (kbd "M-2") 'winum-select-window-2)
+;;      (define-key map (kbd "M-3") 'winum-select-window-3)
+;;      (define-key map (kbd "M-4") 'winum-select-window-4)
+;;      (define-key map (kbd "M-5") 'winum-select-window-5)
+;;      (define-key map (kbd "M-6") 'winum-select-window-6)
+;;      (define-key map (kbd "M-7") 'winum-select-window-7)
+;;      (define-key map (kbd "M-8") 'winum-select-window-8)
+;;      map))
+
+;;(require 'winum)
+
+;;(set-face-attribute 'winum-face nil :weight 'bold)
+
+;;(setq window-numbering-scope            'global
+;;     winum-reverse-frame-list          nil
+;;      winum-auto-assign-0-to-minibuffer t
+;;      winum-assign-func                 'my-winum-assign-func
+;;      winum-auto-setup-mode-line        t
+;;      winum-mode-line-position          1
+;;      winum-ignored-buffers             '(" *which-key*"))
+
+;;(winum-mode)
+
+;;;; multi-term-settings
+
+;;(add-to-list 'load-path "~/.emacs.d/multi-term/multi-term")
+;;(setq multi-term-program "/bin/zsh")
+
+;;;; I don't know what they are....
+
+;;;; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
+ '(cua-mode t nil (cua-base))
+ '(custom-enabled-themes (quote (doom-one)))
+ '(custom-safe-themes
+   (quote
+    ("1f5e1c4d45b325a6febd93fa96640d96846d0b94a882f3f5c6f3a8a946c8f0b2" "b9a06c75084a7744b8a38cb48bc987de10d68f0317697ccbd894b2d0aca06d2b" "a19265ef7ecc16ac4579abb1635fd4e3e1185dcacbc01b7a43cf7ad107c27ced" "b9cbfb43711effa2e0a7fbc99d5e7522d8d8c1c151a3194a4b176ec17c9a8215" "8e4efc4bed89c4e67167fdabff77102abeb0b1c203953de1e6ab4d2e3a02939a" "b67cb8784f6a2d1a3f605e39d2c376937f3bf8460cb8a0d6fc625c0331c00c83" "82fce2cada016f736dbcef237780516063a17c2436d1ee7f42e395e38a15793b" "c63a789fa2c6597da31f73d62b8e7fad52c9420784e6ec34701ae8e8f00071f6" "858a353233c58b69dbe3a06087fc08905df2d8755a0921ad4c407865f17ab52f" "2e1d19424153d41462ad31144549efa41f55dacda9b76571f73904612b15fd0a" "73e35ffa5ca98b57a9923954f296c3854ce6d8736b31fdbdda3d27502d4b4d69" "77bddca0879cb3b0ecdf071d9635c818827c57d69164291cb27268ae324efa84" "3481e594ae6866d72c40ad77d86a1ffa338d01daa9eb0977e324f365cef4f47c" "6be42070d23e832a7493166f90e9bb08af348a818ec18389c1f21d33542771af" "554b7f0439155d6eb648d4837ef03902f51124cacee021217e76f39e9dd314c2" "0a3a41085c19d8121ed0ad3eb658a475ccb948a70a83604641ee7d4c3575a4d5" "d0404bd38534a00ee72a4f887a987d6bff87f4cf8d8f85149e32849b262465a5" "a7e7804313dbf827a441c86a8109ef5b64b03011383322cbdbf646eb02692f76" "e297f54d0dc0575a9271bb0b64dad2c05cff50b510a518f5144925f627bb5832" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "b571f92c9bfaf4a28cb64ae4b4cdbda95241cd62cf07d942be44dc8f46c491f4" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+ '(fci-rule-color "#383838")
+ '(hl-sexp-background-color "#1c1f26")
+ '(inhibit-startup-screen t)
+ '(jdee-db-active-breakpoint-face-colors (cons "#FFF4ED" "#268bd2"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#FFF4ED" "#859900"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#FFF4ED" "#E8D8CA"))
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+ '(org-fontify-done-headline t)
+ '(org-fontify-quote-and-verse-blocks t)
+ '(org-fontify-whole-heading-line t)
+ '(package-selected-packages
+   (quote
+    (iasm-mode ipython-shell-send all-the-icons-ibuffer all-the-icons-gnus all-the-icons-ivy-rich xwidgete swift-mode python-environment doom-modeline zenburn-theme xkcd wttrin winum vlf symon-lingr spacemacs-theme spaceline-all-the-icons smex simple-httpd shell-command selectric-mode rainbow-delimiters quickrun powerline-evil pdf-tools org2ctex org-plus-contrib org-linkany org-edit-latex org-bullets org-beautify-theme neotree mwim multi-term molokai-theme material-theme markdown-preview-mode markdown-preview-eww magit-popup link-hint htmlize hl-anything highlight-thing highlight-parentheses helm gruvbox-theme gntp git-commit ghub fontawesome flycheck dracula-theme doom dired+ counsel better-defaults autotetris-mode all-the-icons-ivy 2048-game)))
+ '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#BC8383")
+     (40 . "#CC9393")
+     (60 . "#DFAF8F")
+     (80 . "#D0BF8F")
+     (100 . "#E0CF9F")
+     (120 . "#F0DFAF")
+     (140 . "#5F7F5F")
+     (160 . "#7F9F7F")
+     (180 . "#8FB28F")
+     (200 . "#9FC59F")
+     (220 . "#AFD8AF")
+     (240 . "#BFEBBF")
+     (260 . "#93E0E3")
+     (280 . "#6CA0A3")
+     (300 . "#7CB8BB")
+     (320 . "#8CD0D3")
+     (340 . "#94BFF3")
+     (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "SkyBlue2")))))

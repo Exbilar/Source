@@ -1,0 +1,75 @@
+
+;; ----- smex-history -----
+(
+ package-install
+ shell
+ pacmacs-start
+ minor-mode-menu-from-indicator
+ xkcd-mode
+ xkcd
+ org-customize
+ org-version
+ mwim-end
+ neotree
+ customize
+ markdown-mode
+ ivy-spacemacs-help-dotspacemacs
+ finder-by-keyword
+ mark-defun
+ kill-buffer
+ visible-mode
+ visual-line-mode
+ evil-insert
+ winum-mode
+ term
+ package-list-packages
+ tree-widget-button-click
+ evil-close-fold
+ evil-open-fold
+ eshell
+ eshell-command
+ helm-M-x
+ cd
+ 5x5
+ arp
+ dbx
+)
+
+;; ----- smex-data -----
+(
+ (helm-M-x . 3)
+ (shell . 26)
+ (eshell-command . 2)
+ (eshell . 1)
+ (evil-open-fold . 1)
+ (evil-close-fold . 1)
+ (tree-widget-button-click . 1)
+ (package-list-packages . 1)
+ (term . 1)
+ (winum-mode . 2)
+ (customize . 2)
+ (evil-insert . 1)
+ (visual-line-mode . 1)
+ (visible-mode . 1)
+ (kill-buffer . 1)
+ (mark-defun . 1)
+ (finder-by-keyword . 1)
+ (ivy-spacemacs-help-dotspacemacs . 1)
+ (markdown-mode . 1)
+ (neotree . 3)
+ (package-install . 9)
+ (mwim-end . 1)
+ (minor-mode-menu-from-indicator . 2)
+ (org-version . 1)
+ (org-customize . 1)
+ (org-cdlatex-mode . 5)
+ (xkcd-mode . 2)
+ (xkcd . 3)
+ (pacmacs-start . 1)
+ (nyan-mode . 1)
+ (latex-math-preview-expression . 1)
+ (latex-math-preview-previous-candidates-for-insertion . 1)
+ (markdown-preview-mode . 3)
+ (markdown-preview-open-browser . 1)
+ (markdown-preview . 2)
+)
